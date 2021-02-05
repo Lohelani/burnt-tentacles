@@ -16,7 +16,19 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/restaurantapp");
+//mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/restaurantapp");
+
+//"mongodb+srv://lohelani:Noelani21@cluster0.qs3sv.mongodb.net/reservationDB?retryWrites=true&w=majority"
+
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/burnttentacles',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  );
 
 // Start the API server
 app.listen(PORT, function() {
